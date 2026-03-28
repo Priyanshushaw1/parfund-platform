@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParFund — Golf. Give. Win.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="../src/css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ─── TOAST ─────────────────────────────────── -->
+<div class="toast" id="toast">✓ Score saved successfully!</div>
+
+<!-- ─── NAVBAR ────────────────────────────────── -->
+<nav class="navbar">
+  <div class="nav-logo" onclick="switchPage('home')">⛳ ParFund</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchPage('home', this)">Home</button>
+    <button class="nav-tab" onclick="switchPage('dashboard', this)">Dashboard</button>
+    <button class="nav-tab" onclick="switchPage('scores', this)">Score Entry</button>
+    <button class="nav-tab" onclick="switchPage('admin', this)">Admin</button>
+  </div>
+  <div class="nav-right">
+    <button class="btn-nav-ghost" onclick="loginUser()">Log In</button>
+    <button class="btn-nav-gold" onclick="switchPage('dashboard', document.querySelectorAll('.nav-tab')[1])">Subscribe Now</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HOME PAGE
+═══════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <div class="home-wrap">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid-lines"></div>
+
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Monthly Prize Draws Now Live
+      </div>
+
+      <h1>
+        Golf <span class="italic gold">better.</span><br>
+        Give <span class="italic gold">more.</span><br>
+        Win <span class="italic">together.</span>
+      </h1>
+
+      <p class="hero-sub">
+        The subscription platform that connects your Stableford scores to a monthly prize pool — with a portion going to the charity you believe in.
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn-hero btn-hero-gold" onclick="switchPage('dashboard', document.querySelectorAll('.nav-tab')[1])">
+          Start Playing → &nbsp; from £19/mo
+        </button>
+        <button class="btn-hero btn-hero-ghost" onclick="switchPage('scores', document.querySelectorAll('.nav-tab')[2])">
+          See Score Entry
+        </button>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-strip">
+      <div class="marquee-inner">
+        <div class="marquee-item"><div class="marquee-dot"></div> April Jackpot: £38,240</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> 3,847 active golfers</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> £142K donated to charity</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Monthly draw · 5 number match</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Jackpot rolls over every month</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Stableford scoring · 1–45 range</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Choose your charity at signup</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> April Jackpot: £38,240</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> 3,847 active golfers</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> £142K donated to charity</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Monthly draw · 5 number match</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Jackpot rolls over every month</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Stableford scoring · 1–45 range</div>
+        <div class="marquee-item"><div class="marquee-dot"></div> Choose your charity at signup</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <div class="stat-block"><span class="stat-num">£142K</span><div class="stat-label">Donated to charity</div></div>
+      <div class="stat-block"><span class="stat-num">3,847</span><div class="stat-label">Active subscribers</div></div>
+      <div class="stat-block"><span class="stat-num">£38K</span><div class="stat-label">April jackpot pool</div></div>
+    </div>
+
+    <!-- How it works -->
+    <section class="how-section">
+      <div class="section-eyebrow">How it works</div>
+      <div class="section-heading">Simple as a birdie.<br><em>Rewarding as an eagle.</em></div>
+      <div class="how-grid">
+        <div class="how-card" data-step="01">
+          <div class="how-icon">📋</div>
+          <div class="how-title">Subscribe & Choose Your Cause</div>
+          <div class="how-desc">Pick a monthly or yearly plan. Select the charity you care about and decide how much of your subscription goes to them — minimum 10%.</div>
+        </div>
+        <div class="how-card" data-step="02">
+          <div class="how-icon">⛳</div>
+          <div class="how-title">Enter Your Stableford Scores</div>
+          <div class="how-desc">Log your latest 5 golf scores (1–45 Stableford format) with dates. Your rolling history auto-updates — newest score in, oldest score out.</div>
+        </div>
+        <div class="how-card" data-step="03">
+          <div class="how-icon">🏆</div>
+          <div class="how-title">Win the Monthly Draw</div>
+          <div class="how-desc">Match 3, 4, or all 5 drawn numbers to win your tier of the prize pool. The jackpot rolls over every month it goes unclaimed — it only grows.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prize pools -->
+    <section class="prize-section">
+      <div class="section-eyebrow">Prize structure</div>
+      <div class="section-heading">Every match wins.<br><em>Jackpot keeps growing.</em></div>
+      <div class="prize-grid">
+        <div class="prize-card jackpot">
+          <div class="prize-match-label">5-Number Match</div>
+          <div class="prize-pct">40%</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold2);margin:8px 0 4px;">🏆 Jackpot Pool</div>
+          <div class="prize-note">Rolls over if no winner this month</div>
+        </div>
+        <div class="prize-card">
+          <div class="prize-match-label">4-Number Match</div>
+          <div class="prize-pct">35%</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text2);margin:8px 0 4px;">Second Tier</div>
+          <div class="prize-note">Split equally among winners</div>
+        </div>
+        <div class="prize-card">
+          <div class="prize-match-label">3-Number Match</div>
+          <div class="prize-pct">25%</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text3);margin:8px 0 4px;">Third Tier</div>
+          <div class="prize-note">Split equally among winners</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charities -->
+    <section class="charities-section">
+      <div class="section-eyebrow">Featured charities</div>
+      <div class="section-heading">Your game.<br><em>Your cause.</em></div>
+      <div class="charity-grid">
+        <div class="charity-card">
+          <div class="charity-emoji" style="background:rgba(61,189,130,.1);">🌱</div>
+          <div class="charity-info">
+            <div class="charity-name">Greenkeepers Foundation</div>
+            <div class="charity-desc">Supporting sustainable golf courses and environmental stewardship worldwide</div>
+          </div>
+          <div class="charity-min">10% min</div>
+        </div>
+        <div class="charity-card">
+          <div class="charity-emoji" style="background:rgba(74,136,212,.1);">🩺</div>
+          <div class="charity-info">
+            <div class="charity-name">Caddie Healthcare Fund</div>
+            <div class="charity-desc">Medical and wellness support for golf industry professionals</div>
+          </div>
+          <div class="charity-min">10% min</div>
+        </div>
+        <div class="charity-card">
+          <div class="charity-emoji" style="background:rgba(201,148,58,.1);">⭐</div>
+          <div class="charity-info">
+            <div class="charity-name">Junior Golf Academy</div>
+            <div class="charity-desc">Free coaching and equipment for underprivileged young golfers</div>
+          </div>
+          <div class="charity-min">10% min</div>
+        </div>
+        <div class="charity-card">
+          <div class="charity-emoji" style="background:rgba(139,92,246,.1);">🧠</div>
+          <div class="charity-info">
+            <div class="charity-name">Mental Health on the Fairway</div>
+            <div class="charity-desc">Using golf as a therapeutic tool for mental health and wellbeing</div>
+          </div>
+          <div class="charity-min">10% min</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Ready to play with <em style="font-style:italic;color:var(--gold2);">purpose?</em></h2>
+      <p>Join 3,847 golfers who score, give, and win every month. No golf clichés — just impact.</p>
+      <button class="btn-hero btn-hero-gold" onclick="switchPage('dashboard', document.querySelectorAll('.nav-tab')[1])">
+        Subscribe Now →
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     DASHBOARD PAGE
+═══════════════════════════════════════════ -->
+<div class="page" id="page-dashboard">
+  <div class="dash-page">
+
+    <!-- Top bar -->
+    <div class="dash-top">
+      <div>
+        <div class="dash-greeting">Good evening, <em>Jamie.</em></div>
+        <div class="dash-subtext">Next draw in 12 days · April 2025 · £38,240 jackpot</div>
+      </div>
+      <div class="user-chip">
+        <div class="user-avatar">JR</div>
+        <div>
+          <div class="user-name">Jamie Rao</div>
+          <div class="sub-status"><div class="sub-dot"></div> Pro Plan · Active</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-label">Subscription</div>
+        <div class="metric-val green">Active</div>
+        <div class="metric-sub">Pro · Renews May 1, 2025</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">April Jackpot</div>
+        <div class="metric-val gold">£38,240</div>
+        <div class="metric-sub">You're eligible · 5-match</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Total Winnings</div>
+        <div class="metric-val gold">£420</div>
+        <div class="metric-sub">Across 3 draws won</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Charity Donated</div>
+        <div class="metric-val green">£72</div>
+        <div class="metric-sub">Junior Golf Academy · 15%</div>
+      </div>
+    </div>
+
+    <!-- Main grid -->
+    <div class="dash-grid-main">
+
+      <!-- Scores panel -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">My Scores · Last 5</div>
+          <button class="btn btn-sm btn-gold" onclick="switchPage('scores', document.querySelectorAll('.nav-tab')[2])">+ Add Score</button>
+        </div>
+
+        <div class="score-row">
+          <div class="score-bubble score-hi">34</div>
+          <div class="score-meta"><div class="score-pts">34 points</div><div class="score-date-text">Mar 22, 2025</div></div>
+          <span class="badge badge-green">Latest</span>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:76%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-bubble score-mid">28</div>
+          <div class="score-meta"><div class="score-pts">28 points</div><div class="score-date-text">Mar 15, 2025</div></div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:62%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-bubble score-hi">31</div>
+          <div class="score-meta"><div class="score-pts">31 points</div><div class="score-date-text">Mar 8, 2025</div></div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:69%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-bubble score-lo">19</div>
+          <div class="score-meta"><div class="score-pts">19 points</div><div class="score-date-text">Mar 1, 2025</div></div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:42%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-bubble score-mid">26</div>
+          <div class="score-meta"><div class="score-pts">26 points</div><div class="score-date-text">Feb 22, 2025</div></div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:58%"></div></div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <!-- Draw countdown -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">April 2025 Draw</div>
+            <span class="badge badge-blue">12 days left</span>
+          </div>
+          <div class="draw-panel-inner">
+            <div class="countdown-row">
+              <div class="countdown-block"><div class="countdown-num">12</div><div class="countdown-label">Days</div></div>
+              <div class="countdown-sep">:</div>
+              <div class="countdown-block"><div class="countdown-num">08</div><div class="countdown-label">Hours</div></div>
+              <div class="countdown-sep">:</div>
+              <div class="countdown-block"><div class="countdown-num">34</div><div class="countdown-label">Mins</div></div>
+            </div>
+            <div class="text-xs text-muted" style="margin-bottom:10px;letter-spacing:.5px;text-transform:uppercase;">Last month's numbers</div>
+            <div class="draw-nums">
+              <div class="draw-ball">7</div>
+              <div class="draw-ball">14</div>
+              <div class="draw-ball">22</div>
+              <div class="draw-ball">31</div>
+              <div class="draw-ball">38</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charity -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">My Charity</div>
+            <span class="badge badge-green">Active</span>
+          </div>
+          <div class="charity-mini">
+            <div class="charity-mini-icon">⭐</div>
+            <div style="flex:1;">
+              <div style="font-weight:700;font-size:14px;margin-bottom:2px;">Junior Golf Academy</div>
+              <div class="text-xs text-muted">15% of subscription · £9/month</div>
+            </div>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+          <div class="progress-meta"><span>£72 donated</span><span>£120 target</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winnings history -->
+    <div class="panel wins-table">
+      <div class="panel-header">
+        <div class="panel-title">Winnings History</div>
+        <span class="badge badge-gold">£420 total</span>
+      </div>
+      <div class="win-row">
+        <div>
+          <div class="win-draw">March 2025 Draw</div>
+          <div class="win-sub">4-Number Match · Paid 3 Apr 2025</div>
+        </div>
+        <span class="badge badge-gold" style="margin-left:auto;">4-Match</span>
+        <div class="win-amount">£140</div>
+        <span class="badge badge-green">Paid</span>
+      </div>
+      <div class="win-row">
+        <div>
+          <div class="win-draw">January 2025 Draw</div>
+          <div class="win-sub">3-Number Match · Paid 5 Feb 2025</div>
+        </div>
+        <span class="badge badge-blue" style="margin-left:auto;">3-Match</span>
+        <div class="win-amount">£80</div>
+        <span class="badge badge-green">Paid</span>
+      </div>
+      <div class="win-row">
+        <div>
+          <div class="win-draw">November 2024 Draw</div>
+          <div class="win-sub">4-Number Match · Verification pending</div>
+        </div>
+        <span class="badge badge-gold" style="margin-left:auto;">4-Match</span>
+        <div class="win-amount">£200</div>
+        <span class="badge badge-red">Pending</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCORE ENTRY PAGE
+═══════════════════════════════════════════ -->
+<div class="page" id="page-scores">
+  <div class="score-page">
+    <div class="page-header">
+      <div class="page-title">Score <em>Entry</em></div>
+      <div class="page-subtitle">Log your latest Stableford score. Your 5 most recent scores are always retained — oldest is replaced automatically.</div>
+    </div>
+
+    <div class="score-entry-grid">
+
+      <!-- Entry form -->
+      <div>
+        <div class="score-form-panel">
+          <div class="panel-title" style="margin-bottom:20px;">New Score</div>
+          <div class="score-input-row">
+            <div class="form-group">
+              <label class="form-label">Stableford Score (1–45)</label>
+              <input class="form-input" id="scoreVal" type="number" min="1" max="45" placeholder="—" oninput="updateScorePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date Played</label>
+              <input class="form-input" id="scoreDate" type="date" oninput="updateScorePreview()">
+            </div>
+          </div>
+
+          <!-- Preview -->
+          <div class="score-preview" id="scorePreview">
+            <div class="preview-row">
+              <div class="preview-bubble" id="previewBubble"></div>
+              <div>
+                <div class="preview-pts" id="previewPts"></div>
+                <div class="preview-date" id="previewDate"></div>
+              </div>
+              <div class="preview-tag" id="previewTag"></div>
+            </div>
+          </div>
+
+          <button class="btn-submit" onclick="submitScore()">Save Score →</button>
+
+          <div class="replace-warning">
+            ⚠ Adding a new score will remove your oldest entry (Feb 22 · 26 pts)
+          </div>
+        </div>
+
+        <!-- Current scores -->
+        <div class="live-scores-panel">
+          <div class="panel-header">
+            <div class="panel-title">Current Scores</div>
+            <span class="badge badge-dim">5 / 5 slots used</span>
+          </div>
+          <div class="score-row">
+            <div class="score-bubble score-hi">34</div>
+            <div class="score-meta"><div class="score-pts">34 points</div><div class="score-date-text">Mar 22, 2025</div></div>
+            <span class="badge badge-green">Latest</span>
+          </div>
+          <div class="score-row">
+            <div class="score-bubble score-mid">28</div>
+            <div class="score-meta"><div class="score-pts">28 points</div><div class="score-date-text">Mar 15, 2025</div></div>
+          </div>
+          <div class="score-row">
+            <div class="score-bubble score-hi">31</div>
+            <div class="score-meta"><div class="score-pts">31 points</div><div class="score-date-text">Mar 8, 2025</div></div>
+          </div>
+          <div class="score-row">
+            <div class="score-bubble score-lo">19</div>
+            <div class="score-meta"><div class="score-pts">19 points</div><div class="score-date-text">Mar 1, 2025</div></div>
+          </div>
+          <div class="score-row" id="oldestRow">
+            <div class="score-bubble score-mid" style="opacity:.5;">26</div>
+            <div class="score-meta">
+              <div class="score-pts" style="opacity:.5;">26 points</div>
+              <div class="score-date-text">Feb 22, 2025</div>
+            </div>
+            <span class="badge badge-red">Will be replaced</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guide panels -->
+      <div class="score-guide-panel">
+
+        <div class="guide-card">
+          <div class="panel-title" style="margin-bottom:16px;">Score Guide</div>
+          <div class="guide-tier" style="background:rgba(61,189,130,.06);border-color:rgba(61,189,130,.15);">
+            <div class="tier-bubble score-hi">30+</div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--green2);">Excellent</div>
+              <div class="text-xs text-muted">Above par · Strong round</div>
+            </div>
+          </div>
+          <div class="guide-tier" style="background:rgba(201,148,58,.06);border-color:rgba(201,148,58,.15);">
+            <div class="tier-bubble score-mid">20+</div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--gold2);">Good</div>
+              <div class="text-xs text-muted">Solid mid-range performance</div>
+            </div>
+          </div>
+          <div class="guide-tier" style="background:rgba(217,79,79,.06);border-color:rgba(217,79,79,.15);">
+            <div class="tier-bubble score-lo" style="font-size:11px;">1–19</div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--red);">Building</div>
+              <div class="text-xs text-muted">Every round counts toward draw</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="panel-title" style="margin-bottom:16px;">Rolling Score Logic</div>
+          <div class="rolling-step">
+            <div class="step-icon" style="background:rgba(201,148,58,.15);color:var(--gold2);">+</div>
+            <div class="step-text"><strong>New score added</strong> at position #1 (most recent)</div>
+          </div>
+          <div class="rolling-step">
+            <div class="step-icon" style="background:rgba(217,79,79,.15);color:var(--red);">−</div>
+            <div class="step-text"><strong>Oldest score removed</strong> from position #5 automatically</div>
+          </div>
+          <div class="rolling-step">
+            <div class="step-icon" style="background:rgba(61,189,130,.15);color:var(--green2);">✓</div>
+            <div class="step-text"><strong>Draw eligibility updates</strong> instantly using your 5 retained scores</div>
+          </div>
+          <div class="rolling-step">
+            <div class="step-icon" style="background:rgba(74,136,212,.15);color:var(--blue);">📅</div>
+            <div class="step-text"><strong>Each score requires a date</strong> — scores are sorted chronologically</div>
+          </div>
+        </div>
+
+        <div class="guide-card" style="background:linear-gradient(135deg,rgba(201,148,58,.07),var(--card));">
+          <div class="panel-title" style="margin-bottom:10px;">Score Range</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;color:var(--gold2);text-align:center;padding:12px 0;">1 – 45</div>
+          <div class="text-xs text-muted" style="text-align:center;">Stableford format · Points per hole</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ADMIN PAGE
+═══════════════════════════════════════════ -->
+<div class="page" id="page-admin">
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+      <div class="sidebar-section-label">Overview</div>
+      <div class="sidebar-item active" onclick="switchAdmin('overview', this)">
+        <span class="sidebar-icon">📊</span> Dashboard
+      </div>
+      <div class="sidebar-section-label">Management</div>
+      <div class="sidebar-item" onclick="switchAdmin('users', this)">
+        <span class="sidebar-icon">👥</span> Users
+      </div>
+      <div class="sidebar-item" onclick="switchAdmin('draw', this)">
+        <span class="sidebar-icon">🎯</span> Draw Engine
+      </div>
+      <div class="sidebar-item" onclick="switchAdmin('charities', this)">
+        <span class="sidebar-icon">🌱</span> Charities
+      </div>
+      <div class="sidebar-item" onclick="switchAdmin('winners', this)">
+        <span class="sidebar-icon">🏆</span> Winners
+      </div>
+      <div class="sidebar-section-label">Analytics</div>
+      <div class="sidebar-item" onclick="switchAdmin('reports', this)">
+        <span class="sidebar-icon">📈</span> Reports
+      </div>
+    </div>
+
+    <!-- Admin content -->
+    <div class="admin-content">
+
+      <!-- ── OVERVIEW ── -->
+      <div class="admin-section active" id="admin-overview">
+        <div class="admin-top">
+          <div>
+            <div class="admin-title">Admin <em style="font-style:italic;color:var(--gold2);">Overview</em></div>
+            <div class="admin-sub">April 2025 · All systems operational</div>
+          </div>
+          <div class="flex gap-10">
+            <button class="btn btn-ghost">Export Report</button>
+            <button class="btn btn-gold" onclick="runSimulation()">Run Draw Simulation</button>
+          </div>
+        </div>
+
+        <div class="admin-metrics">
+          <div class="metric-card"><div class="metric-label">Total Users</div><div class="metric-val">3,847</div><div class="metric-sub">+142 this month</div></div>
+          <div class="metric-card"><div class="metric-label">Active Subs</div><div class="metric-val green">3,612</div><div class="metric-sub">93.9% retention</div></div>
+          <div class="metric-card"><div class="metric-label">April Prize Pool</div><div class="metric-val gold">£38,240</div><div class="metric-sub">Jackpot eligible</div></div>
+          <div class="metric-card"><div class="metric-label">Charity Total</div><div class="metric-val green">£142K</div><div class="metric-sub">All time donations</div></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:16px;">
+          <div class="table-container">
+            <div class="table-header-row">
+              <div class="table-title">Recent Activity</div>
+              <span class="badge badge-green">Live</span>
+            </div>
+            <table class="admin-table">
+              <thead><tr><th>User</th><th>Action</th><th>Time</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="td-bold">Jamie Rao</span><span class="td-sub">jamie@email.com</span></td>
+                  <td>Score entry (34 pts)</td>
+                  <td class="text-muted">2m ago</td>
+                  <td><span class="badge badge-green">OK</span></td>
+                </tr>
+                <tr>
+                  <td><span class="td-bold">Priya Shah</span><span class="td-sub">priya@email.com</span></td>
+                  <td>New subscription</td>
+                  <td class="text-muted">15m ago</td>
+                  <td><span class="badge badge-green">OK</span></td>
+                </tr>
+                <tr>
+                  <td><span class="td-bold">Tom Davies</span><span class="td-sub">tom@email.com</span></td>
+                  <td>Winner verification</td>
+                  <td class="text-muted">1h ago</td>
+                  <td><span class="badge badge-gold">Pending</span></td>
+                </tr>
+                <tr>
+                  <td><span class="td-bold">Anika Singh</span><span class="td-sub">anika@email.com</span></td>
+                  <td>Charity changed</td>
+                  <td class="text-muted">3h ago</td>
+                  <td><span class="badge badge-green">OK</span></td>
+                </tr>
+                <tr>
+                  <td><span class="td-bold">Lee Wong</span><span class="td-sub">lee@email.com</span></td>
+                  <td>Subscription lapsed</td>
+                  <td class="text-muted">5h ago</td>
+                  <td><span class="badge badge-red">Action needed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pool-section">
+            <div class="panel-title" style="margin-bottom:20px;">Prize Pool Distribution</div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">5-Match (Jackpot)</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:40%;background:var(--gold2);"></div></div>
+              <div class="pool-bar-val" style="color:var(--gold2);">40%</div>
+            </div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">4-Match</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:35%;background:var(--text2);"></div></div>
+              <div class="pool-bar-val">35%</div>
+            </div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">3-Match</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:25%;background:var(--text4);"></div></div>
+              <div class="pool-bar-val" style="color:var(--text3);">25%</div>
+            </div>
+            <div class="divider"></div>
+            <div style="text-xs text-muted margin-bottom:6px;" class="text-xs text-muted mb-16">Total pool this month</div>
+            <div class="metric-val gold" style="font-size:32px;margin-top:8px;">£38,240</div>
+            <div class="text-xs text-muted mt-16">Based on 3,612 active subscribers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── USERS ── -->
+      <div class="admin-section" id="admin-users">
+        <div class="admin-top">
+          <div>
+            <div class="admin-title">User <em style="font-style:italic;color:var(--gold2);">Management</em></div>
+            <div class="admin-sub">3,847 total registered users</div>
+          </div>
+          <div class="flex gap-10">
+            <input class="search-input" placeholder="Search by name or email…">
+            <button class="btn btn-ghost">Export CSV</button>
+            <button class="btn btn-gold">+ Invite User</button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Plan</th>
+                <th>Scores</th>
+                <th>Charity</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="td-bold">Jamie Rao</span>
+                  <span class="td-sub">jamie@email.com</span>
+                </td>
+                <td>Pro · £19/mo</td>
+                <td>5 entered</td>
+                <td>Junior Golf · 15%</td>
+                <td><div class="status-indicator"><div class="s-dot s-green"></div>Active</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">Scores</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="td-bold">Priya Shah</span>
+                  <span class="td-sub">priya@email.com</span>
+                </td>
+                <td>Yearly · £149/yr</td>
+                <td>3 entered</td>
+                <td>Greenkeepers · 20%</td>
+                <td><div class="status-indicator"><div class="s-dot s-green"></div>Active</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">Scores</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="td-bold">Tom Davies</span>
+                  <span class="td-sub">tom@email.com</span>
+                </td>
+                <td>Pro · £19/mo</td>
+                <td>5 entered</td>
+                <td>Caddie Health · 10%</td>
+                <td><div class="status-indicator"><div class="s-dot s-gold"></div>Verifying</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">Scores</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="td-bold">Anika Singh</span>
+                  <span class="td-sub">anika@email.com</span>
+                </td>
+                <td>Yearly · £149/yr</td>
+                <td>5 entered</td>
+                <td>Mental Health · 25%</td>
+                <td><div class="status-indicator"><div class="s-dot s-green"></div>Active</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">Scores</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="td-bold">Lee Wong</span>
+                  <span class="td-sub">lee@email.com</span>
+                </td>
+                <td>— Lapsed</td>
+                <td>0 entered</td>
+                <td>—</td>
+                <td><div class="status-indicator"><div class="s-dot s-red"></div>Lapsed</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-green-soft">Reactivate</button>
+                  <button class="btn btn-sm btn-red-soft">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── DRAW ENGINE ── -->
+      <div class="admin-section" id="admin-draw">
+        <div class="admin-top">
+          <div>
+            <div class="admin-title">Draw <em style="font-style:italic;color:var(--gold2);">Engine</em></div>
+            <div class="admin-sub">Configure and publish the monthly prize draw</div>
+          </div>
+          <div class="flex gap-10">
+            <button class="btn btn-ghost" onclick="runSimulation()">Run Simulation</button>
+            <button class="btn btn-gold" onclick="publishDraw()">Publish Draw →</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div class="draw-config-panel">
+            <div class="panel-title" style="margin-bottom:16px;">Configuration</div>
+            <div class="config-row">
+              <div>
+                <div class="config-label">Draw Type</div>
+                <div class="config-desc">How winning numbers are generated</div>
+              </div>
+              <select class="select-field">
+                <option>Random (Lottery style)</option>
+                <option>Algorithmic (Score-weighted)</option>
+              </select>
+            </div>
+            <div class="config-row">
+              <div>
+                <div class="config-label">Jackpot Rollover</div>
+                <div class="config-desc">Carry over if no 5-match winner</div>
+              </div>
+              <button class="toggle-switch on" onclick="this.classList.toggle('on')"></button>
+            </div>
+            <div class="config-row">
+              <div>
+                <div class="config-label">Simulation Mode</div>
+                <div class="config-desc">Test draw without publishing</div>
+              </div>
+              <button class="toggle-switch" onclick="this.classList.toggle('on')"></button>
+            </div>
+            <div class="config-row">
+              <div>
+                <div class="config-label">Eligible Participants</div>
+                <div class="config-desc">Subscribers with 5 scores entered</div>
+              </div>
+              <span style="font-weight:700;color:var(--green2);">3,612</span>
+            </div>
+          </div>
+
+          <div class="pool-section">
+            <div class="panel-title" style="margin-bottom:16px;">Prize Pool Breakdown</div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">5-Match (Jackpot)</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:40%;background:var(--gold2);"></div></div>
+              <div class="pool-bar-val" style="color:var(--gold2);">£15,296</div>
+            </div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">4-Match</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:35%;background:var(--blue);"></div></div>
+              <div class="pool-bar-val" style="color:var(--blue);">£13,384</div>
+            </div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">3-Match</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:25%;background:var(--text3);"></div></div>
+              <div class="pool-bar-val">£9,560</div>
+            </div>
+            <div class="divider"></div>
+            <div class="flex-center gap-8">
+              <div class="metric-val gold" style="font-size:28px;">£38,240</div>
+              <div class="text-xs text-muted">Total April pool</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Last draw results -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">March 2025 Draw Results</div>
+            <span class="badge badge-green">Published</span>
+          </div>
+          <div class="draw-nums" style="margin-bottom:20px;">
+            <div class="draw-ball">7</div>
+            <div class="draw-ball">14</div>
+            <div class="draw-ball">22</div>
+            <div class="draw-ball">31</div>
+            <div class="draw-ball">38</div>
+          </div>
+          <div class="draw-result-grid">
+            <div class="draw-result-block">
+              <div class="drb-label">5-Match Winners</div>
+              <div class="drb-num" style="color:var(--gold3);">0</div>
+              <div class="drb-sub">Jackpot rolls to April</div>
+            </div>
+            <div class="draw-result-block">
+              <div class="drb-label">4-Match Winners</div>
+              <div class="drb-num">3</div>
+              <div class="drb-sub">£140 each</div>
+            </div>
+            <div class="draw-result-block">
+              <div class="drb-label">3-Match Winners</div>
+              <div class="drb-num">18</div>
+              <div class="drb-sub">£53 each</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CHARITIES ── -->
+      <div class="admin-section" id="admin-charities">
+        <div class="admin-top">
+          <div>
+            <div class="admin-title">Charity <em style="font-style:italic;color:var(--gold2);">Management</em></div>
+            <div class="admin-sub">4 active charities · £14,200 distributed this month</div>
+          </div>
+          <button class="btn btn-gold">+ Add Charity</button>
+        </div>
+
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Charity</th>
+                <th>Subscribers</th>
+                <th>This Month</th>
+                <th>All Time</th>
+                <th>Events</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="td-bold">⭐ Junior Golf Academy</span><span class="td-sub">Free coaching for youth</span></td>
+                <td>1,240</td>
+                <td class="text-gold">£5,120</td>
+                <td>£52,400</td>
+                <td>3 upcoming</td>
+                <td><div class="status-indicator"><div class="s-dot s-green"></div>Active</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="td-bold">🌱 Greenkeepers Foundation</span><span class="td-sub">Sustainable golf courses</span></td>
+                <td>980</td>
+                <td class="text-gold">£4,080</td>
+                <td>£41,200</td>
+                <td>1 upcoming</td>
+                <td><div class="status-indicator"><div class="s-dot s-green"></div>Active</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="td-bold">🩺 Caddie Healthcare Fund</span><span class="td-sub">Wellness for professionals</span></td>
+                <td>870</td>
+                <td class="text-gold">£3,280</td>
+                <td>£36,400</td>
+                <td>None</td>
+                <td><div class="status-indicator"><div class="s-dot s-green"></div>Active</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="td-bold">🧠 Mental Health on the Fairway</span><span class="td-sub">Golf as therapy</span></td>
+                <td>522</td>
+                <td class="text-gold">£1,720</td>
+                <td>£12,000</td>
+                <td>2 upcoming</td>
+                <td><div class="status-indicator"><div class="s-dot s-blue"></div>Featured</div></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-blue-soft">Edit</button>
+                  <button class="btn btn-sm btn-ghost">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── WINNERS ── -->
+      <div class="admin-section" id="admin-winners">
+        <div class="admin-top">
+          <div>
+            <div class="admin-title">Winner <em style="font-style:italic;color:var(--gold2);">Verification</em></div>
+            <div class="admin-sub">1 pending review · Proof screenshot required</div>
+          </div>
+          <span class="badge badge-gold" style="font-size:13px;padding:8px 16px;">1 Pending</span>
+        </div>
+
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Winner</th>
+                <th>Draw Month</th>
+                <th>Match Type</th>
+                <th>Prize</th>
+                <th>Proof</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="td-bold">Tom Davies</span><span class="td-sub">tom@email.com</span></td>
+                <td>November 2024</td>
+                <td><span class="badge badge-gold">4-Match</span></td>
+                <td class="text-gold fw-700">£200</td>
+                <td><a href="#" style="color:var(--blue);font-size:12px;font-weight:600;">View screenshot →</a></td>
+                <td><span class="badge badge-gold">Pending</span></td>
+                <td class="flex gap-8">
+                  <button class="btn btn-sm btn-green-soft" onclick="showToast('Winner approved! Payment initiated.')">Approve</button>
+                  <button class="btn btn-sm btn-red-soft" onclick="showToast('Submission rejected.')">Reject</button>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="td-bold">Jamie Rao</span><span class="td-sub">jamie@email.com</span></td>
+                <td>March 2025</td>
+                <td><span class="badge badge-gold">4-Match</span></td>
+                <td class="text-gold fw-700">£140</td>
+                <td><a href="#" style="color:var(--blue);font-size:12px;font-weight:600;">View screenshot →</a></td>
+                <td><span class="badge badge-green">Approved</span></td>
+                <td><button class="btn btn-sm btn-green-soft" onclick="showToast('Payment marked as complete.')">Mark Paid</button></td>
+              </tr>
+              <tr>
+                <td><span class="td-bold">Jamie Rao</span><span class="td-sub">jamie@email.com</span></td>
+                <td>January 2025</td>
+                <td><span class="badge badge-blue">3-Match</span></td>
+                <td class="text-gold fw-700">£80</td>
+                <td>—</td>
+                <td><span class="badge badge-blue">Paid</span></td>
+                <td class="text-muted text-sm">Completed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── REPORTS ── -->
+      <div class="admin-section" id="admin-reports">
+        <div class="admin-top">
+          <div>
+            <div class="admin-title">Reports & <em style="font-style:italic;color:var(--gold2);">Analytics</em></div>
+            <div class="admin-sub">April 2025 · Financial & participation overview</div>
+          </div>
+          <button class="btn btn-ghost">Download PDF</button>
+        </div>
+
+        <div class="admin-metrics">
+          <div class="metric-card"><div class="metric-label">Monthly Revenue</div><div class="metric-val gold">£68,628</div><div class="metric-sub">3,612 subs · avg £19</div></div>
+          <div class="metric-card"><div class="metric-label">Charity Distributed</div><div class="metric-val green">£14,200</div><div class="metric-sub">This month · all charities</div></div>
+          <div class="metric-card"><div class="metric-label">Prizes Awarded</div><div class="metric-val">£12,800</div><div class="metric-sub">March 2025 draw</div></div>
+          <div class="metric-card"><div class="metric-label">Draw Participation</div><div class="metric-val green">94%</div><div class="metric-sub">3,395 of 3,612 eligible</div></div>
+        </div>
+
+        <div class="chart-bar-section">
+          <div class="panel-title" style="margin-bottom:20px;">Charity Distribution — April 2025</div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-name">Junior Golf Academy</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill" style="width:36%;background:var(--gold2);"></div></div>
+            <div class="chart-bar-amount text-gold">£5,120</div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-name">Greenkeepers Foundation</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill" style="width:28%;background:var(--green2);"></div></div>
+            <div class="chart-bar-amount text-green">£4,080</div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-name">Caddie Healthcare</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill" style="width:23%;background:var(--blue);"></div></div>
+            <div class="chart-bar-amount" style="color:var(--blue);">£3,280</div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-bar-name">Mental Health Fairway</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill" style="width:12%;background:var(--purple);"></div></div>
+            <div class="chart-bar-amount" style="color:var(--purple);">£1,720</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+          <div class="panel">
+            <div class="panel-title" style="margin-bottom:16px;">Subscription Split</div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">Monthly (Pro)</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:62%;background:var(--gold2);"></div></div>
+              <div class="pool-bar-val" style="color:var(--gold2);">62%</div>
+            </div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">Yearly</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:38%;background:var(--text3);"></div></div>
+              <div class="pool-bar-val">38%</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-title" style="margin-bottom:16px;">Draw Stats — March 2025</div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">5-Match</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:0%;background:var(--red);"></div></div>
+              <div class="pool-bar-val text-muted">0 winners</div>
+            </div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">4-Match</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:15%;background:var(--gold2);"></div></div>
+              <div class="pool-bar-val" style="color:var(--gold2);">3 winners</div>
+            </div>
+            <div class="pool-bar-row">
+              <div class="pool-bar-label">3-Match</div>
+              <div class="pool-bar-track"><div class="pool-bar-fill" style="width:45%;background:var(--blue);"></div></div>
+              <div class="pool-bar-val" style="color:var(--blue);">18 winners</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /admin-content -->
+  </div><!-- /admin-layout -->
+</div>
+
+<script src="../src/js/main.js"></script>
+</body>
+</html>
