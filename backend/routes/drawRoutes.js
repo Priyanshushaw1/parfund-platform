@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Draw = require("../models/Draw ");
+const Draw = require("../models/Draw");
 const Score = require("../models/Score");
 
 // 🎯 generate draw

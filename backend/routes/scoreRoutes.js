@@ -2,25 +2,28 @@ const express = require("express");
 const router = express.Router();
 const Score = require("../models/Score");
 
-// add score
+// ADD SCORE (max 5 logic)
 router.post("/add", async (req, res) => {
-  try {
-    const newScore = new Score(req.body);
-    await newScore.save();
-    res.json({ message: "Score Saved ✅" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  const { userId, value, date } = req.body;
+
+  await Score.create({ userId, value, date });
+
+  let scores = await Score.find({ userId }).sort({ date: -1 });
+
+  if (scores.length > 5) {
+    const extra = scores.slice(5);
+    for (let s of extra) {
+      await Score.findByIdAndDelete(s._id);
+    }
   }
+
+  res.json({ message: "Score saved" });
 });
 
-// 🔥 get scores by user (YE IMPORTANT HAI)
+// GET SCORES
 router.get("/:userId", async (req, res) => {
-  try {
-    const scores = await Score.find({ userId: req.params.userId });
-    res.json(scores);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  const scores = await Score.find({ userId: req.params.userId }).sort({ date: -1 });
+  res.json(scores);
 });
 
 module.exports = router;
