@@ -1,6 +1,26 @@
 const BASE_URL = "https://parfund-backend.onrender.com/api";
 
-// LOGIN
+/* =========================
+   PAGE SWITCH (FIXED)
+========================= */
+function switchPage(pageId, el) {
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.remove("active");
+  });
+
+  const page = document.getElementById("page-" + pageId);
+  if (page) page.classList.add("active");
+
+  document.querySelectorAll(".nav-tab").forEach(t => {
+    t.classList.remove("active");
+  });
+
+  if (el) el.classList.add("active");
+}
+
+/* =========================
+   LOGIN
+========================= */
 function loginUser() {
   const email = prompt("Email:");
   const password = prompt("Password:");
@@ -23,7 +43,9 @@ function loginUser() {
   });
 }
 
-// ADD SCORE
+/* =========================
+   ADD SCORE
+========================= */
 async function submitScore() {
   const val = document.getElementById("scoreVal").value;
   const date = document.getElementById("scoreDate").value;
@@ -41,7 +63,9 @@ async function submitScore() {
   loadScores();
 }
 
-// LOAD SCORES
+/* =========================
+   LOAD SCORES (FIXED)
+========================= */
 async function loadScores() {
   const userId = localStorage.getItem("userId");
   if (!userId) return;
@@ -49,17 +73,27 @@ async function loadScores() {
   const res = await fetch(`${BASE_URL}/score/${userId}`);
   const scores = await res.json();
 
-  const container = document.querySelector(".live-scores-panel");
-  container.innerHTML = "<h3>My Scores</h3>";
+  const container = document.getElementById("scoresContainer");
+  if (!container) return;
+
+  container.innerHTML = "";
 
   scores.forEach(s => {
     container.innerHTML += `
-      <div>${s.value} pts - ${new Date(s.date).toDateString()}</div>
+      <div class="score-row">
+        <div class="score-bubble">${s.value}</div>
+        <div class="score-meta">
+          <div>${s.value} pts</div>
+          <div>${new Date(s.date).toDateString()}</div>
+        </div>
+      </div>
     `;
   });
 }
 
-// DRAW
+/* =========================
+   DRAW
+========================= */
 async function runDrawUI() {
   const res = await fetch(`${BASE_URL}/draw/run`);
   const data = await res.json();
@@ -81,7 +115,9 @@ async function runDrawUI() {
     `Matches: ${result.matches} | ${result.result}`;
 }
 
-// AUTO LOAD
+/* =========================
+   AUTO LOAD
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
   loadScores();
 });
